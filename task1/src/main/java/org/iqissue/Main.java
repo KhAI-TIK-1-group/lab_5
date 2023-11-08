@@ -1,7 +1,6 @@
 package org.iqissue;
 
 import org.iqissue.cprint.TablePrint;
-
 import java.util.Scanner;
 
 public class Main {
@@ -46,6 +45,6 @@ public class Main {
         System.out.println(huff.decode(data));
         System.out.println();
         System.out.println();
-        TablePrint.tableOutput(Huffman.getEncodedMap());
+        TablePrint.tableOutput(Huffman.probabilities, Huffman.getEncodedMap());
     }
 }

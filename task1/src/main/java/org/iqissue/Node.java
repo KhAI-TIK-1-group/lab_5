@@ -3,14 +3,17 @@ package org.iqissue;
 import java.util.Map;
 
 public class Node implements Comparable<Node> {
+
     private char symbol;
+    private double probability;
     private static int count;
 
     private Node left;
     private Node right;
 
-    public Node(char symbol) {
+    public Node(char symbol, double probability) {
         this.symbol = symbol;
+        this.probability = probability;
     }
 
     public Node(Node left, Node right) {
@@ -27,6 +30,14 @@ public class Node implements Comparable<Node> {
         if (isLeaf())
             return count;
         return left.getFrequency() + right.getFrequency();
+    }
+
+    public double getProbability() {
+        return probability;
+    }
+
+    public void addProbability(double prob) {
+        probability += prob;
     }
 
     public char getSymbol() {
@@ -52,9 +63,7 @@ public class Node implements Comparable<Node> {
 
     @Override
     public String toString() {
-        String ch = symbol == '\n' ? "\\n" : "" + symbol;
-
-        return String.format("%d", getFrequency());
+        return String.format("%.4f", getProbability());
     }
 
     public void fillCodeMap(Map<Character, String> codemap, String work) {

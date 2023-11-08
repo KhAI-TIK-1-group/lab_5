@@ -14,10 +14,17 @@ public class Huffman {
     private PriorityQueue<Node> countFrequencies(char[] letters) {
         Map<Character, Node> count = new HashMap<>();
         for (char ch : letters) {
-            count.computeIfAbsent(ch, Node::new).add();
+            count.computeIfAbsent(ch, k -> new Node(ch, 0)).add();
+            count.get(ch).addProbability(1.0 / letters.length);
         }
         probabilities.putAll(count);
         return new PriorityQueue<>(count.values());
+    }
+
+    private Map<Character, String> createCodeMap() {
+        Map<Character, String> result = new TreeMap<>();
+        root.fillCodeMap(result, "");
+        return result;
     }
 
 
@@ -31,11 +38,6 @@ public class Huffman {
     }
 
 
-    private Map<Character, String> createCodeMap() {
-        Map<Character, String> result = new TreeMap<>();
-        root.fillCodeMap(result, "");
-        return result;
-    }
 
     public String encode(String text) {
         char[] letters = getChars(text);
@@ -71,43 +73,4 @@ public class Huffman {
     public static Map<Character, String> getEncodedMap() {
         return codemap;
     }
-
-    public static Node getRoot() {
-        return root;
-    }
 }
-
-/*
-
-Алфавіт    Позначення   Імовірність     Код      Кількість
-джерела   кодових слов                Хаффмана    символів
-----------------------------------------------------------------
-x1           X1             0.3          0
-x2           X2             0.7          1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-* */
