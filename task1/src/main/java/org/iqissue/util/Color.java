@@ -19,4 +19,12 @@ public class Color {
     public static final String PINK = "\u001B[38;5;200m";
     public static final String LIGHT_GREEN = "\u001B[38;5;46m";
     public static final String LIGHT_BLUE = "\u001B[38;5;39m";
+    //new
+    public static final String MAGENTA = "\u001B[35m";
+    public static final String DARK_GRAY = "\u001B[90m";
+    public static final String LIGHT_GRAY = "\u001B[37;1m";
+    public static final String UNDERLINE = "\u001B[4m";
+    public static final String ITALIC = "\u001B[3m";
+    public static final String BLINK = "\u001B[5m";
+    public static final String REVERSED = "\u001B[7m";
 }
