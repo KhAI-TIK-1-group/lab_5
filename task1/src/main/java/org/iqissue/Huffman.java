@@ -27,7 +27,6 @@ public class Huffman {
         return result;
     }
 
-
     private Node createTree(PriorityQueue<Node> nodes) {
         while (nodes.size() > 1) {
             Node node1 = nodes.poll();
@@ -36,8 +35,6 @@ public class Huffman {
         }
         return nodes.poll();
     }
-
-
 
     public String encode(String text) {
         char[] letters = getChars(text);
